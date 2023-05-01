@@ -1,0 +1,35 @@
+﻿@model FlightM
+@{
+    ViewData["Title"] = "Create Flight";
+}
+
+<form method="post" class="form-">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-dark">Create a flight</h2>
+            <hr/>
+        </div>
+        @*<div asp-validation-summary="All"></div>*@
+        <div class="mb-3">
+            <label asp-for="From"></label>
+            <span asp-validation-for="From" class="text-danger"></span>
+            <input asp-for="From" class="form-control w-25" />
+            <label asp-for="To"></label>
+            <span asp-validation-for="To" class="text-danger"></span>
+            <input asp-for="To" class="form-control w-25" />
+            <label asp-for="seats"></label>
+            <span asp-validation-for="seats" class="text-danger"></span>
+            <input asp-for="seats" class="form-control w-25" />
+            <label asp-for="flightTime"></label>
+            <span asp-validation-for="flightTime" class="text-danger"></span>
+            <input asp-for="flightTime" class="form-control w-25" />
+            <label asp-for="cost"></label>
+            <span asp-validation-for="cost" class="text-danger"></span>
+            <input asp-for="cost" class="form-control w-25" />
+        </div>
+        <div class="row-1">
+        <a asp-controller="Flights" asp-action="Index" class="btn btn-secondary" style="width:10%">Back to List</a>
+        <button type="submit" class="btn btn-primary" style="width:10%;">Create</button>
+        </div>
+    </div>
+</form>

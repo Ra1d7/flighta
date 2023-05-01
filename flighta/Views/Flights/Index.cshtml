@@ -4,6 +4,7 @@
     ViewData["Title"] = "Flights";
 }
 
+
 <!-- Header-->
 <header class="bg-dark py-5">
     <div class="container px-5">
@@ -22,6 +23,12 @@
 </header>
 <!-- Flights section-->
 <section class="py-5 border-bottom" id="features">
+    <partial name="_Notification" />
+    <div class="text-center">
+    <a asp-controller="Flights" asp-action="Create" class="btn btn-dark w-25">
+            <i class="bi bi-plus-circle"></i> &nbsp;Create a new flight
+        </a>
+    </div>
     <div class="container px-5 my-5">
         <div class="d-flex flex-wrap">
             @foreach (FlightM flightm in @Model)
@@ -29,9 +36,11 @@
                 <div class="card text-center mr-4" style="width: 18rem;margin:25px">
                     <img class="card-img-top" style="max-height:180px" src=".\assets\pics\(@flightm.To).jpg" alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title">Flight number @flightm.flightId</h5>
-                        <p class="card-text">this flight goes from @flightm.From to @flightm.To at @flightm.flightTime</p>
-                        <a href="#" class="btn btn-primary">Book</a>
+                        <h5 class="card-title">Flight @flightm.flightId</h5>
+                        <p class="card-text">this flight goes from @flightm.From to @flightm.To at @flightm.flightTime with @flightm.seats seats remaining</p>
+                        <a asp-controller="Flights" asp-action="Book" class="btn btn-primary"><i class="bi bi-person-badge-fill"></i>&nbsp;Book</a>
+                        <a asp-controller="Flights" asp-action="Edit" asp-route-flightid="@flightm.flightId" class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
+                        <a asp-controller="Flights" asp-action="Delete" asp-route-flightid="@flightm.flightId" class="btn btn-danger"><i class="bi bi-trash-fill"></i></a>
                     </div>
                 </div>
             }
