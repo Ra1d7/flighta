@@ -1,0 +1,44 @@
+﻿@using Flighta.Data;
+@model List<FlightM>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<!-- Header-->
+<header class="bg-dark py-5">
+    <div class="container px-5">
+        <div class="row gx-5 justify-content-center">
+            <div class="col-lg-6">
+                <div class="text-center my-5">
+                    <div class="feature bg-primary bg-gradient text-white rounded-3 mb-2">
+                        <i class="bi bi-airplane-fill" style="font-size:2rem;"></i>
+                    </div>
+                    <h2 class="display-5 fw-bolder text-white mb-2">Current Flights avaliable</h2>
+                    <p class="lead text-white-50 mb-4">Quickly book a flight at any destination you'd like from our flights'</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Flights section-->
+<section class="py-5 border-bottom" id="features">
+    <div class="container px-5 my-5">
+        <div class="d-flex flex-wrap">
+            @foreach (FlightM flightm in @Model)
+            {
+                <div class="card text-center mr-4" style="width: 18rem;margin:25px">
+                    <img class="card-img-top" style="max-height:180px" src=".\assets\pics\(@flightm.To).jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Flight number @flightm.flightId</h5>
+                        <p class="card-text">this flight goes from @flightm.From to @flightm.To at @flightm.flightTime</p>
+                        <a href="#" class="btn btn-primary">Book</a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+<!-- Flights info section-->
+<section class="py-5 border-bottom">
+</section>
+
