@@ -23,7 +23,19 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    @if(ViewData["Title"].ToString() == "Home")
+                    @{
+                        string role = "";
+                        string username = "";
+                        var claims = Context.User.Claims.ToList();
+                        if(claims.Count > 0)
+                        {
+                            role = claims[1].Value;
+                            ViewData["role"] = role;
+                            username = claims[0].Value;
+                            ViewData["username"] = username;
+                        }
+                    }
+                    @if(ViewData["Title"].ToString() == "Home" && role != "")
                     {
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">Home</a></li>
                     }
@@ -31,7 +43,7 @@
                     {
                         <li class="nav-item"><a class="nav-link" aria-current="page" href="/">Home</a></li>
                     }
-                    @if (ViewData["Title"].ToString() == "Flights")
+                    @if (ViewData["Title"].ToString() == "Flights" && role != "")
                     {
                         <li class="nav-item"><a class="nav-link active" href="/flights">Flights</a></li>
                     }
@@ -39,15 +51,15 @@
                     {
                         <li class="nav-item"><a class="nav-link" href="/flights">Flights</a></li>
                     }
-                    @if (ViewData["Title"].ToString() == "Users")
+                    @if (ViewData["Title"].ToString() == "Users" && role == "Admin")
                     {
                         <li class="nav-item"><a class="nav-link active" href="/users">Users</a></li>
                     }
-                    else
+                    else if (role == "Admin")
                     {
                         <li class="nav-item"><a class="nav-link" href="/users">Users</a></li>
                     }
-                    @if (ViewData["Title"].ToString() == "Bookings")
+                    @if (ViewData["Title"].ToString() == "Bookings" && role != "")
                     {
                         <li class="nav-item"><a class="nav-link active" href="/booking">Bookings</a></li>
                     }
@@ -63,13 +75,17 @@
                     {
                         <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
                     }
-                    @if (ViewData["Title"].ToString() == "Register" || ViewData["Title"].ToString() == "Login")
+                    @if (ViewData["Title"].ToString() == "Register" || ViewData["Title"].ToString() == "Login" && role == "")
                     {
                         <li class="nav-item"><a class="nav-link active" href="/login">Login/Register</a></li>
                     }
-                    else
+                    else if (role == "")
                     {
                         <li class="nav-item"><a class="nav-link" href="/login">Login/Register</a></li>
+                    }
+                    else
+                    {
+                        <a class="nav-link" asp-controller="Login" asp-action="Logout">Logout</a>
                     }
                 </ul>
             </div>

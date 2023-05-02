@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
+using static Flighta.ApiControllers.UsersController;
 
 namespace flighta.Controllers
 {
@@ -52,6 +53,32 @@ namespace flighta.Controllers
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
                 new ClaimsPrincipal(identity),properties);
             return RedirectToAction("Index","Home");
+        }
+        public async Task<IActionResult> Register()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Register(User user)
+        {
+            if (ModelState.IsValid)
+            {
+            await _db.CreateUser(user);
+            TempData["success"] = "Successfully registered";
+            return RedirectToAction("Index");
+            }
+            return View();
+        }
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync();
+            if(HttpContext.User.Claims.Count() == 0)
+            {
+            ViewData["role"] = "";
+            TempData["success"] = "Signed out!";
+            }
+            return RedirectToAction("Index");
         }
     }
 }

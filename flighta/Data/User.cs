@@ -2,6 +2,7 @@
 {
     public class User
     {
+        public User() { }
         public User(int userId, string username, Roles role)
         {
             this.userId = userId;

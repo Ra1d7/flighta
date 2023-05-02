@@ -17,11 +17,6 @@ namespace flighta.Controllers
 
         public IActionResult Index()
         {
-            //var routeValues = new RouteValueDictionary {
-            //                                  { "keyFillter","test" },
-            //                                  { "valueFillter","test" }
-            //                                };
-            //return RedirectToAction("DisplayTable", "Dashboard", routeValues);
             return View();
         }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

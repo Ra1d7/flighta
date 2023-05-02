@@ -15,8 +15,20 @@ namespace flighta.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var detailsList = await _db.GetBookings();
-            return View(detailsList);
+            if(HttpContext.User.Identity.IsAuthenticated)
+            {
+            var claims = HttpContext.User.Claims.ToList();
+            if (claims[1].Value == "Client")
+            {
+                int.TryParse(claims[2].Value, out int id);
+                return View(await _db.GetUserBookings(id));
+            }else if (claims[1].Value == "Admin")
+            {
+                return View(await _db.GetBookings());
+            }
+            }
+            TempData["error"] = "Please login to see your bookings";
+            return View(new List<BookingDetails>());
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
