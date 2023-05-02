@@ -15,7 +15,7 @@ namespace Flighta.Helpers
         {
             _config = config;
         }
-        public record EmailData(string fullname, string email, string phonenumber, string message);
+        public record EmailData(string fullname, string email, string? phonenumber, string message);
         public async Task<bool> SendEmailAsync(EmailData data)
         {
             smtpServer = _config.GetValue<string>("SmtpData:SmtpServer");
