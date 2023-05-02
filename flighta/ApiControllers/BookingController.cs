@@ -1,4 +1,5 @@
 ﻿using Flighta.DataAccess;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,7 +7,7 @@ namespace Flighta.ApiControllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class BookingController : ControllerBase
     {
         public record BookingDetailsDto(int userid, int flightid);
@@ -46,7 +47,7 @@ namespace Flighta.ApiControllers
             }
         }
         [HttpDelete]
-        [Authorize(Policy = "Admin")]
+        [Authorize(Policy = "Admin",AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<bool> DeleteBooking([FromBody] BookingDetailsDto details)
         {
             return await _db.DeleteBooking(details);

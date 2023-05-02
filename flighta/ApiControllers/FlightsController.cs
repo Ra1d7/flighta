@@ -1,5 +1,6 @@
 ﻿using Flighta.Data;
 using Flighta.DataAccess;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,7 +22,7 @@ namespace Flighta.ApiControllers
         }
         // GET: api/<FlightsController>
         [HttpGet]
-        [Authorize(Policy = "Admin")]
+        [Authorize(Policy = "Admin", AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<List<FlightM>> Get()
         {
             return await _db.GetFlights();
@@ -29,7 +30,7 @@ namespace Flighta.ApiControllers
 
         // GET api/<FlightsController>/5
         [HttpGet("{id}")]
-        [Authorize(Policy = "Admin")]
+        [Authorize(Policy = "Admin", AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<FlightM?> Get(int id)
         {
             return await _db.GetFlight(id);
@@ -37,7 +38,7 @@ namespace Flighta.ApiControllers
 
         // POST api/<FlightsController>
         [HttpPost]
-        [Authorize(Policy = "Admin")]
+        [Authorize(Policy = "Admin", AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<IActionResult> Post([FromBody] CreateFlightDto flight)
         {
             if (flight != null)
@@ -51,7 +52,7 @@ namespace Flighta.ApiControllers
 
         // PUT api/<FlightsController>/5
         [HttpPut]
-        [Authorize(Policy = "Admin")]
+        [Authorize(Policy = "Admin", AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<IActionResult> Put([FromBody] UpdateFlightDto flight)
         {
             if (flight != null)
@@ -76,7 +77,7 @@ namespace Flighta.ApiControllers
 
         // DELETE api/<FlightsController>/5
         [HttpDelete]
-        [Authorize(Policy = "Admin")]
+        [Authorize(Policy = "Admin", AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<IActionResult> DeleteFlight([FromQuery] int id)
         {
             try

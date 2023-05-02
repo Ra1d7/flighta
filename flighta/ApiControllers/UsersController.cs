@@ -1,5 +1,6 @@
 ﻿using Flighta.Data;
 using Flighta.DataAccess;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,6 +10,7 @@ namespace Flighta.ApiControllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Policy = "Admin", AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class UsersController : ControllerBase
     {
         public record UpdateUserDto(int userid, string username, string password, string email);
@@ -23,7 +25,6 @@ namespace Flighta.ApiControllers
         }
         // GET: api/<UsersController>
         [HttpGet]
-        [Authorize(Policy = "Admin")]
         public async Task<List<User>> Get()
         {
             return await _db.GetUsers();
@@ -31,7 +32,6 @@ namespace Flighta.ApiControllers
 
         // GET api/<UsersController>/5
         [HttpGet("{emailOrUsername}")]
-        [Authorize(Policy = "Admin")]
         public async Task<User?> Get(string emailOrUsername)
         {
             return await _db.GetUser(emailOrUsername);
@@ -39,7 +39,6 @@ namespace Flighta.ApiControllers
 
         // POST api/<UsersController>
         [HttpPost]
-        [Authorize(Policy = "Admin")]
         public async Task<IActionResult> Post([FromBody] CreateUserDto user)
         {
             if (user != null)
@@ -53,7 +52,6 @@ namespace Flighta.ApiControllers
 
         // PUT api/<UsersController>/5
         [HttpPut]
-        [Authorize(Policy = "Admin")]
         public async Task<IActionResult> Put([FromBody] UpdateUserDto user)
         {
             if (user != null)
@@ -78,7 +76,6 @@ namespace Flighta.ApiControllers
 
         // DELETE api/<UsersController>/5
         [HttpDelete]
-        [Authorize(Policy = "Admin")]
         public async Task<IActionResult> DeleteUser([FromQuery] int id)
         {
             try
