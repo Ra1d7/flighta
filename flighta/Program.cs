@@ -12,23 +12,25 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddMvcCore().AddApiExplorer();
 builder.Services.AddTransient<IEmailSender, EmailSender>();
 builder.Services.AddControllersWithViews();
-builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options => {
-    options.LoginPath = "/login";
-    options.ExpireTimeSpan = TimeSpan.FromMinutes(20);
-});
-builder.Services.AddAuthentication("Bearer").AddJwtBearer(opts =>
-{
-    opts.TokenValidationParameters = new TokenValidationParameters()
-    {
-        ValidateAudience = true,
-        ValidateIssuer = true,
-        ValidateIssuerSigningKey = true,
-        ValidIssuer = builder.Configuration.GetValue<string>("Authentication:Issuer"),
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration.GetValue<string>("Authentication:SecretKey"))),
-        ValidAudience = builder.Configuration.GetValue<string>("Authentication:Audience"),
-        ValidateLifetime = true
-    };
-});
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(
+                    CookieAuthenticationDefaults.AuthenticationScheme,
+                    options => {
+                        options.LoginPath = "/Login";
+                    }
+                ).AddJwtBearer(opts =>
+                {
+                    opts.TokenValidationParameters = new TokenValidationParameters()
+                    {
+                        ValidateAudience = true,
+                        ValidateIssuer = true,
+                        ValidateIssuerSigningKey = true,
+                        ValidIssuer = builder.Configuration.GetValue<string>("Authentication:Issuer"),
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration.GetValue<string>("Authentication:SecretKey"))),
+                        ValidAudience = builder.Configuration.GetValue<string>("Authentication:Audience"),
+                        ValidateLifetime = true
+                    };
+                }); ;
 builder.Services.AddAuthorization(opts =>
 {
     opts.AddPolicy("Admin", policy => { policy.RequireClaim("Role", "Admin"); });

@@ -20,7 +20,8 @@ namespace flighta.Controllers
             ClaimsPrincipal claimUser = HttpContext.User;
             if(claimUser.Identity.IsAuthenticated )
             {
-                TempData["error"] = $"Already Logged in! as {claimUser.Identity.Name}";
+                string[] claimvalues = claimUser.Claims.Select(c => c.Value).ToArray();
+                TempData["error"] = $"Already Logged in! as {claimvalues[0]}\nwhich is an {claimvalues[1]}";
                 return RedirectToAction("Index","Home");
             }
             return View();
