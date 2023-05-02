@@ -374,6 +374,33 @@ namespace Flighta.DataAccess
             reader.Close();
             return user;
         }
+        public async Task<User?> GetUserIdbyUsername(string username)
+        {
+            User user = null;
+            using SqlConnection conn = new SqlConnection(_config.GetConnectionString("Default"));
+            SqlCommand cmd = new SqlCommand(
+
+                "SELECT [userId],[username],[hashedPass],[roleid],email FROM [Users] WHERE [username] = @username"
+
+                , conn);
+            cmd.Parameters.AddWithValue("@username", username);
+            await conn.OpenAsync();
+            SqlDataReader reader = await cmd.ExecuteReaderAsync();
+
+            while (await reader.ReadAsync())
+            {
+                user = new User(
+                    reader.GetInt32(0), //userid
+                    reader.GetString(1), //username
+                    reader.GetString(2), //pass
+                    reader.GetString(4), //email
+                    reader.GetInt32(3) == 1 ? Roles.Client : Roles.Admin //roleid
+                );
+            }
+
+            reader.Close();
+            return user;
+        }
         public async Task<Roles> GetRole(string username)
         {
             Roles role = Roles.None;
@@ -394,6 +421,28 @@ namespace Flighta.DataAccess
 
             reader.Close();
             return role;
+        }
+        public async Task<List<BookingDetails>> GetUserBookings(int userid)
+        {
+            List<BookingDetails> bookings = new List<BookingDetails>();
+            using SqlConnection conn = new SqlConnection(_config.GetConnectionString("Default"));
+            SqlCommand cmd = new SqlCommand("SELECT UserId,FlightId,book_time FROM BookedFlights WHERE [UserId] = @userid", conn);
+            cmd.Parameters.AddWithValue("@userid", userid);
+            await conn.OpenAsync();
+            SqlDataReader reader = await cmd.ExecuteReaderAsync();
+
+            while (await reader.ReadAsync())
+            {
+                BookingDetails booking = new BookingDetails(
+                    reader.GetInt32(0), //userid
+                    reader.GetInt32(1), //flightid
+                    reader.GetDateTime(2) //Book_time
+                );
+                bookings.Add(booking);
+            }
+
+            reader.Close();
+            return bookings;
         }
     }
 }

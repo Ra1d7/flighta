@@ -31,6 +31,7 @@ namespace flighta.Controllers
         public async Task<IActionResult> Index(VMLogin login)
         {
             bool result = await _db.LoginUser(login.Username,login.Password);
+            var user = await _db.GetUserIdbyUsername(login.Username);
             if (!result)
             {
                 TempData["error"] = "Wrong username or password";
@@ -39,7 +40,8 @@ namespace flighta.Controllers
             Roles role = await _db.GetRole(login.Username);
             List<Claim> claims = new List<Claim>() {
             new Claim(ClaimTypes.NameIdentifier,login.Username),
-            new Claim(ClaimTypes.Role,role.ToString())
+            new Claim(ClaimTypes.Role,role.ToString()),
+            new Claim("userid",user.userId.ToString())
             };
             ClaimsIdentity identity = new ClaimsIdentity(claims,CookieAuthenticationDefaults.AuthenticationScheme);
             AuthenticationProperties properties = new AuthenticationProperties() { 

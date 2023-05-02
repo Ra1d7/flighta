@@ -15,7 +15,7 @@ namespace flighta.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index(bool log=false)
+        public IActionResult Index()
         {
             //var routeValues = new RouteValueDictionary {
             //                                  { "keyFillter","test" },

@@ -21,7 +21,7 @@ namespace Flighta.ApiControllers
         }
         // GET: api/<FlightsController>
         [HttpGet]
-        [AllowAnonymous]
+        [Authorize(Policy = "Admin")]
         public async Task<List<FlightM>> Get()
         {
             return await _db.GetFlights();

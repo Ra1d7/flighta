@@ -38,7 +38,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Flight @flightm.flightId</h5>
                         <p class="card-text">this flight goes from @flightm.From to @flightm.To at @flightm.flightTime with @flightm.seats seats remaining</p>
-                        <a asp-controller="Flights" asp-action="Book" class="btn btn-primary"><i class="bi bi-person-badge-fill"></i>&nbsp;Book</a>
+                        <a asp-controller="Flights" asp-route-flightid="@flightm.flightId" asp-action="Book" asp class="btn btn-primary"><i class="bi bi-person-badge-fill"></i>&nbsp;Book</a>
                         <a asp-controller="Flights" asp-action="Edit" asp-route-flightid="@flightm.flightId" class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
                         <a asp-controller="Flights" asp-action="Delete" asp-route-flightid="@flightm.flightId" class="btn btn-danger"><i class="bi bi-trash-fill"></i></a>
                     </div>
