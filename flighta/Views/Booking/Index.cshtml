@@ -54,7 +54,7 @@
                                 @booking.time
                             </td>
                             <td class="text-center">
-                                <button class="btn btn-danger btn-sm" formmethod="post" asp-controller="Booking" asp-action="Delete" asp-route-flightid="@booking.flightid" type="submit">Delete</button>
+                                <button class="btn btn-danger btn-sm" formmethod="post" asp-controller="Booking" asp-action="Delete" asp-route-details="@JsonConvert.SerializeObject(booking)" type="submit">Delete</button>
                             </td>
                         </tr>
                     }

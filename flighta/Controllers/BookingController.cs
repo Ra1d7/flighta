@@ -1,6 +1,7 @@
 ﻿using Flighta.DataAccess;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using static Flighta.ApiControllers.BookingController;
 
 namespace flighta.Controllers
@@ -33,14 +34,23 @@ namespace flighta.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public async Task<IActionResult> Delete(int flightid)
+        public async Task<IActionResult> Delete(string details)
         {
-            var detailsList = await _db.GetBookings();
-            TempData["success"] = "Booking has been deleted!";
+            var obj = JsonConvert.DeserializeObject<BookingDetails>(details);
             var userid = HttpContext.User.Claims.ToList()[2].Value;
             int.TryParse(userid, out var id);
-            var DetailsDto = new BookingDetailsDto(id,flightid);
+            if(id == obj.userid || HttpContext.User.IsInRole("Admin"))
+            {
+            var detailsList = await _db.GetBookings();
+            TempData["success"] = "Booking has been deleted!";
+            var DetailsDto = new BookingDetailsDto(obj.userid,obj.flightid);
             await _db.DeleteBooking(DetailsDto);
+            }
+            else
+            {
+                TempData["error"] = "you don't have permissions to delete this booking";
+                return RedirectToAction("Index");
+            }
             return RedirectToAction("Index");
         }
     }

@@ -24,18 +24,15 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     @{
-                        string role = "";
                         string username = "";
                         var claims = Context.User.Claims.ToList();
                         if(claims.Count > 0)
                         {
-                            role = claims[1].Value;
-                            ViewData["role"] = role;
                             username = claims[0].Value;
                             ViewData["username"] = username;
                         }
                     }
-                    @if(ViewData["Title"].ToString() == "Home" && role != "")
+                    @if(ViewData["Title"].ToString() == "Home" && Context.User.IsInRole("Admin"))
                     {
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">Home</a></li>
                     }
@@ -43,27 +40,27 @@
                     {
                         <li class="nav-item"><a class="nav-link" aria-current="page" href="/">Home</a></li>
                     }
-                    @if (ViewData["Title"].ToString() == "Flights" && role != "")
+                    @if (ViewData["Title"].ToString() == "Flights" && Context.User.Identity.IsAuthenticated)
                     {
                         <li class="nav-item"><a class="nav-link active" href="/flights">Flights</a></li>
                     }
-                    else
+                    else if(Context.User.Identity.IsAuthenticated)
                     {
                         <li class="nav-item"><a class="nav-link" href="/flights">Flights</a></li>
                     }
-                    @if (ViewData["Title"].ToString() == "Users" && role == "Admin")
+                    @if (ViewData["Title"].ToString() == "Users" && Context.User.IsInRole("Admin"))
                     {
                         <li class="nav-item"><a class="nav-link active" href="/users">Users</a></li>
                     }
-                    else if (role == "Admin")
+                    else if (Context.User.IsInRole("Admin"))
                     {
                         <li class="nav-item"><a class="nav-link" href="/users">Users</a></li>
                     }
-                    @if (ViewData["Title"].ToString() == "Bookings" && role != "")
+                    @if (ViewData["Title"].ToString() == "Bookings" && Context.User.Identity.IsAuthenticated)
                     {
                         <li class="nav-item"><a class="nav-link active" href="/booking">Bookings</a></li>
                     }
-                    else
+                    else if (Context.User.Identity.IsAuthenticated)
                     {
                         <li class="nav-item"><a class="nav-link" href="/booking">Bookings</a></li>
                     }
@@ -75,11 +72,11 @@
                     {
                         <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
                     }
-                    @if (ViewData["Title"].ToString() == "Register" || ViewData["Title"].ToString() == "Login" && role == "")
+                    @if (ViewData["Title"].ToString() == "Register" || ViewData["Title"].ToString() == "Login" && !Context.User.Identity.IsAuthenticated)
                     {
                         <li class="nav-item"><a class="nav-link active" href="/login">Login/Register</a></li>
                     }
-                    else if (role == "")
+                    else if (!Context.User.Identity.IsAuthenticated)
                     {
                         <li class="nav-item"><a class="nav-link" href="/login">Login/Register</a></li>
                     }

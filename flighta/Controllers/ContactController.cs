@@ -20,7 +20,6 @@ namespace flighta.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> SendMessage(EmailData data)
         {
-            //await _sender.SendEmailAsync(data);
             if(ModelState.IsValid)
             {
             TempData["info"] = $"thank you for your feedback {data.fullname} !";
