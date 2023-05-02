@@ -6,6 +6,7 @@ namespace Flighta.ApiControllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class BookingController : ControllerBase
     {
         public record BookingDetailsDto(int userid, int flightid);

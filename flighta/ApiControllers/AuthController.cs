@@ -55,7 +55,7 @@ namespace Flighta.ApiControllers
                 _config.GetValue<string>("Authentication:Audience"),
                 claims,
                 DateTime.UtcNow,
-                DateTime.UtcNow.AddDays(1),
+                DateTime.UtcNow.AddMinutes(20),
                 SigningCreds
             );
             return new JwtSecurityTokenHandler().WriteToken(token);

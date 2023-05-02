@@ -6,6 +6,7 @@ using static Flighta.ApiControllers.BookingController;
 
 namespace flighta.Controllers
 {
+    [Authorize]
     public class BookingController : Controller
     {
         private readonly FlightDB _db;

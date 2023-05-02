@@ -82,7 +82,36 @@
                     }
                     else
                     {
-                        <a class="nav-link" asp-controller="Login" asp-action="Logout">Logout</a>
+                        if (Context.User.IsInRole("Client"))
+                        {
+                            
+                        <div class="dropdown mx-3">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                @username
+                            </button>
+                                <div class="dropdown-menu bg-dark bg-opacity-50" aria-labelledby="dropdownMenuButton">
+                                <a class="nav-link" asp-controller="Flights" asp-action="Index">Flights</a>
+                                <a class="nav-link" asp-controller="Booking" asp-action="Index">Bookings</a>
+                                <a class="nav-link" asp-controller="Login" asp-action="Logout">Logout</a>
+                            </div>
+                            </div>
+                        }
+                        else
+                        {
+                            
+                        <div class="dropdown mx-3">
+                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                @username
+                            </button>
+                            <div class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuButton">
+                                <a class="nav-link" asp-controller="Flights" asp-action="Index">Flights</a>
+                                <a class="nav-link" asp-controller="Booking" asp-action="Index">Bookings</a>
+                                <a class="nav-link" asp-controller="Login" asp-action="Logout">Logout</a>
+                                    <div class="dropdown-divider text-light fw-bold"></div>
+                                    <span class="p-2 text-danger" href="#">Admin</span>
+                            </div>
+                        </div>
+                        }
                     }
                 </ul>
             </div>
@@ -93,17 +122,9 @@
     <footer class="py-5 bg-dark">
         <div class="container px-5"><p class="m-0 text-center text-white">Copyright &copy; Pigeon Agency 2023</p></div>
     </footer>
-    <!-- Bootstrap core JS-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
     <script src="js/scripts.js"></script>
-    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-    <!-- * *                               SB Forms JS                               * *-->
-    <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-    <script src="~/lib/jquery/dist/jquery.js"></script>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
 </body>
 </html>
