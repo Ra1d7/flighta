@@ -24,7 +24,7 @@ namespace Flighta.Data
             this.flightTime = flightTime;
             this.cost = cost;
         }
-
+        [DisplayName("Flight Number")]
         public int flightId { get; set; }
         public string From { get; set; } = string.Empty;
         public string To { get; set; } = string.Empty;
