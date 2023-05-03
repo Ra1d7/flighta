@@ -30,6 +30,11 @@ namespace flighta.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Index(VMLogin login)
         {
+            if (!ModelState.IsValid)
+            {
+                TempData["error"] = "invalid credentials or fields";
+                return View();
+            }
             bool result = await _db.LoginUser(login.Username,login.Password);
             var user = await _db.GetUserIdbyUsername(login.Username);
             if (!result)
@@ -44,13 +49,14 @@ namespace flighta.Controllers
             new Claim("userid",user.userId.ToString())
             };
             ClaimsIdentity identity = new ClaimsIdentity(claims,CookieAuthenticationDefaults.AuthenticationScheme);
-            AuthenticationProperties properties = new AuthenticationProperties() { 
-            AllowRefresh = true,
-            IsPersistent = login.KeepLogged     
+            AuthenticationProperties properties = new AuthenticationProperties() {
+                AllowRefresh = true,
+                IsPersistent = login.KeepLogged    
             };
 
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
                 new ClaimsPrincipal(identity),properties);
+            TempData["success"] = $"Logged in as {login.Username}";
             return RedirectToAction("Index","Home");
         }
         public async Task<IActionResult> Register()
