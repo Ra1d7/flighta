@@ -43,6 +43,37 @@
                 <tbody>
                     @foreach (var booking in @Model)
                     {
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Delete booking</h5>
+                                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        @if (Context.User.IsInRole("Admin"))
+                                        {
+
+                                            <span>Are you sure you want to delete booking of flight @booking.flightid for user @booking.userid</span>
+                                        }
+
+                                        else{
+                                        <span>
+                                            Are you sure you want to delete your booking of flight @booking.flightid
+                                            </span>
+                                            <input type="text" placeholder="Reason for deletion" name="reason" class="form-control mt-3 w-75"></input>
+                                        }
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button class="btn btn-danger" formmethod="post" asp-controller="Booking" asp-action="Delete" asp-route-details="@JsonConvert.SerializeObject(booking)" type="submit">Delete</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <tr>
                             <td class="text-center" id="userid" name="userid">
                                 @booking.userid
@@ -54,7 +85,11 @@
                                 @booking.time
                             </td>
                             <td class="text-center">
-                                <button class="btn btn-danger btn-sm" formmethod="post" asp-controller="Booking" asp-action="Delete" asp-route-details="@JsonConvert.SerializeObject(booking)" type="submit">Delete</button>
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                    Delete
+                                </button>
+                                
                             </td>
                         </tr>
                     }

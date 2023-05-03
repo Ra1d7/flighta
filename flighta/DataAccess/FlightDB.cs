@@ -315,6 +315,24 @@ namespace Flighta.DataAccess
             }
             catch { return false; }
         }
+        public async Task<bool> DeleteBookingWithReason(BookingDetailsDto details,string reason)
+        {
+            try
+            {
+                using SqlConnection conn = new SqlConnection(_config.GetConnectionString("Default"));
+                SqlCommand cmd = new SqlCommand("DELETE FROM BookedFlights WHERE userId = @userid AND flightId = @flightid", conn);
+                SqlCommand cmd2 = new SqlCommand("INSERT INTO CancelledBookings (flightid,userid,Reason) VALUES (@flightid,@userid,@reason)", conn);
+                cmd.Parameters.AddWithValue("@userid", details.userid);
+                cmd.Parameters.AddWithValue("@flightid", details.flightid);
+                cmd2.Parameters.AddWithValue("@userid", details.userid);
+                cmd2.Parameters.AddWithValue("@flightid", details.flightid);
+                cmd2.Parameters.AddWithValue("@reason", reason);
+                await conn.OpenAsync();
+                await cmd2.ExecuteNonQueryAsync();
+                return await cmd.ExecuteNonQueryAsync() == 0 ? false : true;
+            }
+            catch { return false; }
+        }
         public async Task<FlightM?> GetFlightid(CreateFlightDto dto)
         {
             FlightM flight = null;

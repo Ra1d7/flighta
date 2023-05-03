@@ -37,6 +37,7 @@ namespace flighta.Controllers
         [Authorize]
         public async Task<IActionResult> Delete(string details)
         {
+            string reason = Request.Form["reason"];
             var obj = JsonConvert.DeserializeObject<BookingDetails>(details);
             var userid = HttpContext.User.Claims.ToList()[2].Value;
             int.TryParse(userid, out var id);
@@ -45,7 +46,7 @@ namespace flighta.Controllers
             var detailsList = await _db.GetBookings();
             TempData["success"] = "Booking has been deleted!";
             var DetailsDto = new BookingDetailsDto(obj.userid,obj.flightid);
-            await _db.DeleteBooking(DetailsDto);
+            await _db.DeleteBookingWithReason(DetailsDto,reason is null ? $"Deleted by admin" : reason);
             }
             else
             {
