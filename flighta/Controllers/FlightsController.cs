@@ -17,15 +17,14 @@ namespace flighta.Controllers
         [Authorize]
         public async Task<IActionResult> Index()
         {
-            var claims = HttpContext.User.Claims.ToList();
-            if (claims[0].Value is not null)
+            if (HttpContext.User.Identity.IsAuthenticated)
             {
 
-            var user = await _db.GetUserIdbyUsername(claims[0].Value);
-            var bookings = await _db.GetUserBookings(user.userId); //get all user bookings
-            var allFlights = await _db.GetFlights(); //get all flights
-            allFlights.RemoveAll(x => bookings.Any(y => y.flightid == x.flightId)); //don't display flights that the user already booked
-            return View(allFlights);
+                int.TryParse(HttpContext.User.Claims.ToList()[2].Value, out int userid);
+                var bookings = await _db.GetUserBookings(userid); //get all user bookings
+                var allFlights = await _db.GetFlights(); //get all flights
+                allFlights.RemoveAll(x => bookings.Any(y => y.flightid == x.flightId && y.reason.Length == 0)); //don't display flights that the user already booked
+                return View(allFlights);
             }
             TempData["error"] = "user has no claims";
             return View(new List<FlightM>());
@@ -95,8 +94,8 @@ namespace flighta.Controllers
         {
             try
             {
-            await _db.DeleteFlight(flight.flightId);
-            TempData["success"] = "Flight has been Deleted Successfully!";
+                await _db.DeleteFlight(flight.flightId);
+                TempData["success"] = "Flight has been Deleted Successfully!";
 
             }
             catch (Exception ex)

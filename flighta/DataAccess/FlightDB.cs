@@ -265,6 +265,7 @@ namespace Flighta.DataAccess
             List<BookingDetails> bookings = new List<BookingDetails>();
             using SqlConnection conn = new SqlConnection(_config.GetConnectionString("Default"));
             SqlCommand cmd = new SqlCommand("SELECT UserId,FlightId,book_time FROM BookedFlights", conn);
+            SqlCommand cmd2 = new SqlCommand("SELECT UserId,FlightId,reason FROM CancelledBookings", conn);
             await conn.OpenAsync();
             SqlDataReader reader = await cmd.ExecuteReaderAsync();
 
@@ -277,8 +278,20 @@ namespace Flighta.DataAccess
                 );
                 bookings.Add(booking);
             }
-
             reader.Close();
+            SqlDataReader reader2 = await cmd2.ExecuteReaderAsync();
+
+            while (await reader2.ReadAsync())
+            {
+                BookingDetails booking = new BookingDetails(
+                    reader2.GetInt32(0), //userid
+                    reader2.GetInt32(1), //flightid
+                    DateTime.Now,
+                    reader2.GetString(2) //Book_time
+                );
+                bookings.Add(booking);
+            }
+            reader2.Close();
             return bookings;
         }
         public async Task<BookingDetails?> GetBooking(int userid)
@@ -445,7 +458,9 @@ namespace Flighta.DataAccess
             List<BookingDetails> bookings = new List<BookingDetails>();
             using SqlConnection conn = new SqlConnection(_config.GetConnectionString("Default"));
             SqlCommand cmd = new SqlCommand("SELECT UserId,FlightId,book_time FROM BookedFlights WHERE [UserId] = @userid", conn);
+            SqlCommand cmd2 = new SqlCommand("SELECT UserId,FlightId,reason FROM CancelledBookings WHERE [UserId] = @userid", conn);
             cmd.Parameters.AddWithValue("@userid", userid);
+            cmd2.Parameters.AddWithValue("@userid", userid);
             await conn.OpenAsync();
             SqlDataReader reader = await cmd.ExecuteReaderAsync();
 
@@ -458,8 +473,20 @@ namespace Flighta.DataAccess
                 );
                 bookings.Add(booking);
             }
-
             reader.Close();
+            SqlDataReader reader2 = await cmd2.ExecuteReaderAsync();
+
+            while (await reader2.ReadAsync())
+            {
+                BookingDetails booking = new BookingDetails(
+                    reader2.GetInt32(0), //userid
+                    reader2.GetInt32(1), //flightid
+                    DateTime.Now,
+                    reader2.GetString(2) //reason
+                );
+                bookings.Add(booking);
+            }
+            reader2.Close();
             return bookings;
         }
     }

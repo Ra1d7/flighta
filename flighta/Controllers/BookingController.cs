@@ -39,14 +39,15 @@ namespace flighta.Controllers
         {
             string reason = Request.Form["reason"];
             var obj = JsonConvert.DeserializeObject<BookingDetails>(details);
-            var userid = HttpContext.User.Claims.ToList()[2].Value;
-            int.TryParse(userid, out var id);
-            if(id == obj.userid || HttpContext.User.IsInRole("Admin"))
+            int.TryParse(HttpContext.User.Claims.ToList()[2].Value, out var id);
+            bool isAdmin = HttpContext.User.IsInRole("Admin");
+            if (reason is null || reason == "") reason = "Deleted by user";
+            reason = isAdmin ? "Deleted by admin" : reason;
+            if(id == obj.userid || isAdmin)
             {
-            var detailsList = await _db.GetBookings();
             TempData["success"] = "Booking has been deleted!";
             var DetailsDto = new BookingDetailsDto(obj.userid,obj.flightid);
-            await _db.DeleteBookingWithReason(DetailsDto,reason is null ? $"Deleted by admin" : reason);
+            await _db.DeleteBookingWithReason(DetailsDto,reason);
             }
             else
             {

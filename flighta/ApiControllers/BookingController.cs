@@ -11,7 +11,7 @@ namespace Flighta.ApiControllers
     public class BookingController : ControllerBase
     {
         public record BookingDetailsDto(int userid, int flightid);
-        public record BookingDetails(int userid, int flightid, DateTime time);
+        public record BookingDetails(int userid, int flightid, DateTime time,string? reason = "");
         private readonly IConfiguration _config;
         private readonly FlightDB _db;
 

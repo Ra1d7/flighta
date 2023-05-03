@@ -26,9 +26,14 @@
             <table class="table table-dark">
                 <thead>
                     <tr>
+                    @if (Context.User.IsInRole("Admin"))
+                    {
+
                         <th class="text-center">
                             UserId
                         </th>
+                  
+                    }
                         <th class="text-center">
                             FlightId
                         </th>
@@ -74,10 +79,16 @@
                                 </div>
                             </div>
                         </div>
+                            @if(booking.reason == "")
+                            {                        
                         <tr>
-                            <td class="text-center" id="userid" name="userid">
+                            @if(Context.User.IsInRole("Admin"))
+                                {
+                                    
+                                <td class="text-center" id="userid" name="userid">
                                 @booking.userid
                             </td>
+                                }
                             <td class="text-center" id="flightid" name="flightid">
                                 @booking.flightid
                             </td>
@@ -90,6 +101,30 @@
                                     Delete
                                 </button>
                                 
+                            </td>
+                            </tr>
+                        }
+                    }
+                    @foreach(var deletedbooking in Model.Where(x => x.reason.Length > 0))
+                    {
+                        <tr class="table-danger">
+                            @if (Context.User.IsInRole("Admin"))
+                            {
+
+                            <td class="text-center" id="userid" name="userid">
+                                @deletedbooking.userid
+                            </td>
+                              
+                            }
+                            <td class="text-center" id="flightid" name="flightid">
+                                @deletedbooking.flightid
+                            </td>
+                            <td class="text-center">
+                                @deletedbooking.time
+                            </td>
+                            <td class="text-center">
+                                <h6>@deletedbooking.reason</h6>
+
                             </td>
                         </tr>
                     }
