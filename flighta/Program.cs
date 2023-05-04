@@ -51,7 +51,7 @@ if (!app.Environment.IsDevelopment())
 app.UseSwagger();
 app.UseSwaggerUI(c =>
 {
-    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Blazor API V1");
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Flight Agency API V1");
 });
 app.UseHttpsRedirection();
 app.UseStaticFiles();

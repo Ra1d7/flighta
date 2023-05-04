@@ -16,12 +16,14 @@ namespace Flighta.ApiControllers
     {
         private readonly IConfiguration _config;
         private readonly FlightDB _db;
+        private readonly ILogger<AuthController> _logger;
 
         public record UserDataDto(string email, string password);
-        public AuthController(IConfiguration config, FlightDB db)
+        public AuthController(IConfiguration config, FlightDB db, ILogger<AuthController> logger)
         {
             _config = config;
             _db = db;
+            _logger = logger;
         }
         [HttpPost]
         [Route("CreateToken")]
@@ -29,6 +31,7 @@ namespace Flighta.ApiControllers
         public async Task<IActionResult> GetToken([FromBody] UserDataDto data)
         {
             var user = await CheckData(data);
+            _logger.LogInformation($"Successfully generated a token for {HttpContext.Connection.RemoteIpAddress} at {DateTime.Now}");
             return (user is null) ? Unauthorized() : Ok(GenToken(user));
         }
 
@@ -41,6 +44,7 @@ namespace Flighta.ApiControllers
                 User? usr = await _db.GetUser(user);
                 return usr;
             }
+            _logger.LogInformation($"invalid login details while generating a token for {HttpContext.Connection.RemoteIpAddress} at {DateTime.Now}");
             return null;
         }
         private string? GenToken(User user)
