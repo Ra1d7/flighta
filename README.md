@@ -1,8 +1,76 @@
-# Flighta
+## Flighta
 
-Flighta is a fictional flight agency project made in .NET Core which consists of two project types: an MVC website and an API.
+Flighta is a fictional flight agency project made in .NET Core consisting of an MVC website and an API. The MVC website offers several controllers such as Flights, Users, Bookings, and SendEmail API to communicate with the website developers. Users can view available flights and book them through the website, and admins can manage flights, users, and bookings. The API is used to perform CRUD operations for flights, users, and bookings.
+
+Some of the notable features of Flighta include:
+
+- User authentication using encrypted cookies to manage the user's state.
+- JWT authentication in the API to secure endpoints and ensure only admins can access them.
+- Usage of ADO.NET to communicate with the SQL database, which stores all the information.
+- Implementation of Bootstrap 5 with jQuery, Toastr, and Bootstrap modals and dropdown buttons to create a responsive and user-friendly UI.
+- Contact Us page and SendEmail API controller that uses SMTP client to send feedback to website developers.
+
+Overall, Flighta is a well-designed, secure, and user-friendly flight booking website that can be used as a base for building more complex flight booking systems. The use of modern technologies such as .NET Core, JWT authentication, and Bootstrap 5 ensures that the website is fast, reliable, and responsive.
+
+## Technologies used
+
+<div>
+<img height="32" width="32" src="https://cdn.simpleicons.org/dotnet/purple"/>
+<img height="32" width="32" src="https://cdn.simpleicons.org/microsoftsqlserver/red"/>
+<img height="32" width="32" src="https://cdn.simpleicons.org/bootstrap/#7952B3"/>
+<img height="32" width="32" src="https://cdn.simpleicons.org/html5/#E34F26"/>
+<img height="32" width="32" src="https://cdn.simpleicons.org/csharp/#239120"/>
+<img height="32" width="32" src="https://cdn.simpleicons.org/css3/#1572B6"/>
+<img height="32" width="32" src="https://cdn.simpleicons.org/javascript/#F7DF1E"/>
+<img height="32" width="32" src="https://cdn.simpleicons.org/jquery/#0769AD"/>
+<img height="32" width="32" src="https://nuget.org/Content/gallery/img/default-package-icon-256x256.png"/>
+</div>
 
 
+## Screenshots 🌠 
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/25421570/236459622-77b96e5e-9027-469b-9c6f-c4611fd24ec3.png" width="80%">
+</p>
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/25421570/236459702-4ecfd70b-460d-4910-b524-b6317e352f0c.png" width="80%">
+</p>
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/25421570/236459764-40edb947-e084-4ff1-811b-083f7535e297.png" width="80%">
+</p>
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/25421570/236459838-013026f9-749d-4406-83c3-ea48d22f587d.png" width="80%">
+</p>
+
+<p align="center">
+  <img src="(https://user-images.githubusercontent.com/25421570/236459799-857c8722-c745-4274-b412-5daa492677c2.png" width="80%">
+</p>
+
+<p align="center">
+  <img src="(https://user-images.githubusercontent.com/25421570/236459883-61f0556f-ac81-46e9-acd9-7b15c802a999.png" width="80%">
+</p>
+
+<p align="center">
+  <img src="(https://user-images.githubusercontent.com/25421570/236459899-d3629be5-50d0-45a1-a7aa-55d1e9174230.png" width="80%">
+</p>
+
+<p align="center">
+  <img src="(https://user-images.githubusercontent.com/25421570/236465253-2939bb45-5292-4dd4-bf56-fd04308b2ea9.png" width="80%">
+</p>
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/25421570/236465253-2939bb45-5292-4dd4-bf56-fd04308b2ea9.png" width="80%">
+</p>
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/25421570/236465737-8ad88a42-e293-4082-b9e0-9b2de81a624c.png" width="80%">
+</p>
+
+
+
+<details>
 
 ## MVC Website
 
