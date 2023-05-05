@@ -18,16 +18,26 @@ Overall, Flighta is a well-designed, secure, and user-friendly flight booking we
 
 
 <div align="center">
-<img height="32" width="32" src="https://cdn.simpleicons.org/dotnet/purple"/>&nbsp;&nbsp;
-<img height="32" width="32" src="https://cdn.simpleicons.org/microsoftsqlserver/red"/>&nbsp;&nbsp;
-<img height="32" width="32" src="https://cdn.simpleicons.org/bootstrap/#7952B3"/>&nbsp;&nbsp;
-<img height="32" width="32" src="https://cdn.simpleicons.org/html5/#E34F26"/>&nbsp;&nbsp;
-<img height="32" width="32" src="https://cdn.simpleicons.org/csharp/#239120"/>&nbsp;&nbsp;
-<img height="32" width="32" src="https://cdn.simpleicons.org/css3/#1572B6"/>&nbsp;&nbsp;
-<img height="32" width="32" src="https://cdn.simpleicons.org/javascript/#F7DF1E"/>&nbsp;&nbsp;
-<img height="32" width="32" src="https://cdn.simpleicons.org/jquery/#0769AD"/>&nbsp;&nbsp;
-<img height="32" width="32" src="https://cdn.simpleicons.org/postman/#FF6C37"/>&nbsp;&nbsp;
-<img height="32" width="32" src="https://nuget.org/Content/gallery/img/default-package-icon-256x256.png"/>
+<a href="https://dotnet.microsoft.com/">
+<img height="32" width="32" src="https://cdn.simpleicons.org/dotnet/purple"/>&nbsp;&nbsp;</a>
+<a href="https://www.microsoft.com/en-us/sql-server/sql-server-downloads">
+<img height="32" width="32" src="https://cdn.simpleicons.org/microsoftsqlserver/red"/>&nbsp;&nbsp;</a>
+<a href="https://getbootstrap.com/">
+<img height="32" width="32" src="https://cdn.simpleicons.org/bootstrap/#7952B3"/>&nbsp;&nbsp;</a>
+<a href="https://en.wikipedia.org/wiki/HTML5">
+<img height="32" width="32" src="https://cdn.simpleicons.org/html5/#E34F26"/>&nbsp;&nbsp;</a>
+<a href="https://dotnet.microsoft.com/en-us/languages/csharp">
+<img height="32" width="32" src="https://cdn.simpleicons.org/csharp/#239120"/>&nbsp;&nbsp;</a>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS">
+<img height="32" width="32" src="https://cdn.simpleicons.org/css3/#1572B6"/>&nbsp;&nbsp;</a>
+<a href="https://developer.mozilla.org/en-US/docs/Web/javascript">
+<img height="32" width="32" src="https://cdn.simpleicons.org/javascript/#F7DF1E"/>&nbsp;&nbsp;</a>
+<a href="https://jquery.com/">
+<img height="32" width="32" src="https://cdn.simpleicons.org/jquery/#0769AD"/>&nbsp;&nbsp;</a>
+<a href="https://www.postman.com/">
+<img height="32" width="32" src="https://cdn.simpleicons.org/postman/#FF6C37"/>&nbsp;&nbsp;</a>
+<a href="https://github.com/CodeSeven/toastr">
+<img height="32" width="32" src="https://nuget.org/Content/gallery/img/default-package-icon-256x256.png"/></a>
 </div>
 <hr/>
 <h2 align="center"> Screenshots 🌠 </h2>
