@@ -1,4 +1,4 @@
-<h1 align="center">flighta project ReadMe 🫡</h1>
+<h1 align="center">Flighta Project ReadMe 🫡</h1>
 
 Flighta is a fictional flight agency project made in .NET Core consisting of an MVC website and an API. The MVC website offers several controllers such as Flights, Users, Bookings, and SendEmail API to communicate with the website developers. Users can view available flights and book them through the website, and admins can manage flights, users, and bookings. The API is used to perform CRUD operations for flights, users, and bookings.
 
@@ -25,6 +25,7 @@ Overall, Flighta is a well-designed, secure, and user-friendly flight booking we
 <img height="32" width="32" src="https://cdn.simpleicons.org/css3/#1572B6"/>&nbsp;&nbsp;
 <img height="32" width="32" src="https://cdn.simpleicons.org/javascript/#F7DF1E"/>&nbsp;&nbsp;
 <img height="32" width="32" src="https://cdn.simpleicons.org/jquery/#0769AD"/>&nbsp;&nbsp;
+<img height="32" width="32" src="https://cdn.simpleicons.org/postman/#FF6C37"/>&nbsp;&nbsp;
 <img height="32" width="32" src="https://nuget.org/Content/gallery/img/default-package-icon-256x256.png"/>
 </div>
 <hr/>
