@@ -98,26 +98,28 @@ The Contact Us page allows users to send feedback to the website developers.
 <p align="center">
 The API uses JWT authentication, and almost all controllers are locked down only for users with the role of "Admin." Here's a breakdown of what each controller offers:
 </p>
-### Auth
 
+<h3 align="center"> Auth </h3>
+<p align="center">
 The Auth controller takes in a username and password and generates a JWT token.
+</p>
 
-### Flights
-
+<h3 align="center"> Flights </h3>
+<p align="center">
 The Flights controller offers CRUD operations for flights.
+</p>
 
-### Users
-
+<h3 align="center"> Users </h3>
+</p align="center">
 The Users controller offers CRUD operations for users.
+</p>
 
-### Bookings
-
+<h3 align="center"> Bookings </h3>
+<p align="center">
 The Bookings controller offers CRUD operations for bookings.
+</p>
 
-### SendEmail
-
+<h3 align="center"> Send Email </h3>
+<p align="center">
 The SendEmail API controller uses an SMTP client to send feedback to the website developers.
-
-## Technologies Used
-
-The project uses ADO.NET to communicate with the database with queries or stored procedures and implements a SQL database to store the information. The website uses Bootstrap 5 with jQuery, and a JavaScript library called Toastr to display notifications. There are also Bootstrap modals and dropdown buttons.
+</p>
