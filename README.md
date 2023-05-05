@@ -17,14 +17,14 @@ Overall, Flighta is a well-designed, secure, and user-friendly flight booking we
 
 
 <div align="center">
-<img height="32" width="32" src="https://cdn.simpleicons.org/dotnet/purple"/>
-<img height="32" width="32" src="https://cdn.simpleicons.org/microsoftsqlserver/red"/>
-<img height="32" width="32" src="https://cdn.simpleicons.org/bootstrap/#7952B3"/>
-<img height="32" width="32" src="https://cdn.simpleicons.org/html5/#E34F26"/>
-<img height="32" width="32" src="https://cdn.simpleicons.org/csharp/#239120"/>
-<img height="32" width="32" src="https://cdn.simpleicons.org/css3/#1572B6"/>
-<img height="32" width="32" src="https://cdn.simpleicons.org/javascript/#F7DF1E"/>
-<img height="32" width="32" src="https://cdn.simpleicons.org/jquery/#0769AD"/>
+<img height="32" width="32" src="https://cdn.simpleicons.org/dotnet/purple"/>&nbsp;&nbsp;
+<img height="32" width="32" src="https://cdn.simpleicons.org/microsoftsqlserver/red"/>&nbsp;&nbsp;
+<img height="32" width="32" src="https://cdn.simpleicons.org/bootstrap/#7952B3"/>&nbsp;&nbsp;
+<img height="32" width="32" src="https://cdn.simpleicons.org/html5/#E34F26"/>&nbsp;&nbsp;
+<img height="32" width="32" src="https://cdn.simpleicons.org/csharp/#239120"/>&nbsp;&nbsp;
+<img height="32" width="32" src="https://cdn.simpleicons.org/css3/#1572B6"/>&nbsp;&nbsp;
+<img height="32" width="32" src="https://cdn.simpleicons.org/javascript/#F7DF1E"/>&nbsp;&nbsp;
+<img height="32" width="32" src="https://cdn.simpleicons.org/jquery/#0769AD"/>&nbsp;&nbsp;
 <img height="32" width="32" src="https://nuget.org/Content/gallery/img/default-package-icon-256x256.png"/>
 </div>
 <hr/>
