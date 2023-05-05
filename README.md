@@ -9,6 +9,7 @@ Some of the notable features of Flighta include:
 - Usage of ADO.NET to communicate with the SQL database, which stores all the information.
 - Implementation of Bootstrap 5 with jQuery, Toastr, and Bootstrap modals and dropdown buttons to create a responsive and user-friendly UI.
 - Contact Us page and SendEmail API controller that uses SMTP client to send feedback to website developers.
+- The repository contains a postman collection export which is used to test the API and it's authentication and can be linked to a monitor
 
 Overall, Flighta is a well-designed, secure, and user-friendly flight booking website that can be used as a base for building more complex flight booking systems. The use of modern technologies such as .NET Core, JWT authentication, and Bootstrap 5 ensures that the website is fast, reliable, and responsive.
 <hr/>
