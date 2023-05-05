@@ -1,4 +1,4 @@
-## Flighta
+<h1 align="center">flighta project ReadMe 🫡</h1>
 
 Flighta is a fictional flight agency project made in .NET Core consisting of an MVC website and an API. The MVC website offers several controllers such as Flights, Users, Bookings, and SendEmail API to communicate with the website developers. Users can view available flights and book them through the website, and admins can manage flights, users, and bookings. The API is used to perform CRUD operations for flights, users, and bookings.
 
@@ -11,10 +11,12 @@ Some of the notable features of Flighta include:
 - Contact Us page and SendEmail API controller that uses SMTP client to send feedback to website developers.
 
 Overall, Flighta is a well-designed, secure, and user-friendly flight booking website that can be used as a base for building more complex flight booking systems. The use of modern technologies such as .NET Core, JWT authentication, and Bootstrap 5 ensures that the website is fast, reliable, and responsive.
+<hr/>
 
-## Technologies used
+<h2 align="center"> Technologies used 🧪</h2>
 
-<div>
+
+<div align="center">
 <img height="32" width="32" src="https://cdn.simpleicons.org/dotnet/purple"/>
 <img height="32" width="32" src="https://cdn.simpleicons.org/microsoftsqlserver/red"/>
 <img height="32" width="32" src="https://cdn.simpleicons.org/bootstrap/#7952B3"/>
@@ -25,9 +27,9 @@ Overall, Flighta is a well-designed, secure, and user-friendly flight booking we
 <img height="32" width="32" src="https://cdn.simpleicons.org/jquery/#0769AD"/>
 <img height="32" width="32" src="https://nuget.org/Content/gallery/img/default-package-icon-256x256.png"/>
 </div>
+<hr/>
+<h2 align="center"> Screenshots 🌠 </h2>
 
-
-## Screenshots 🌠 
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/25421570/236459622-77b96e5e-9027-469b-9c6f-c4611fd24ec3.png" width="80%">
@@ -70,32 +72,32 @@ Overall, Flighta is a well-designed, secure, and user-friendly flight booking we
 
 
 
-<details>
+<h2 align="center"> The MVC part of the project </h2>
 
-## MVC Website
-
-The MVC website has several controllers:
-
-### Flights
-
+<h3 align="center"> Flights </h3>
+<p align="center">
 The Flights controller offers a page for clients to view available flights to book with flight number, flight time, and number of seats. If an admin is logged in, it shows an edit button, a delete button, and a create flight button.
+</p>
 
-### Users
-
+<h3 align="center"> Users </h3>
+<p align="center">
 The Users controller offers a page for only admins to view current users with their user ID, username, email, and role (client or admin).
+</p>
 
-### Bookings
-
+<h3 align="center"> Bookings </h3>
+<p align="center">
 The Bookings controller will be automatically populated for clients, showing only their booked flights and a delete button. For admins, it shows all bookings made by all users. There is a delete button to delete bookings for which users have to provide a reason, and those deleted bookings will appear in red on the bookings list with their reason for deletion.
+</p>
 
-### Contact Us
-
+<h3 align="center"> Contact Us </h3>
+<p align="center">
 The Contact Us page allows users to send feedback to the website developers.
+</p>
 
-## API
-
+<h2 align="center"> The API ⚒️ </h2>
+<p align="center">
 The API uses JWT authentication, and almost all controllers are locked down only for users with the role of "Admin." Here's a breakdown of what each controller offers:
-
+</p>
 ### Auth
 
 The Auth controller takes in a username and password and generates a JWT token.
