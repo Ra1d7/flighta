@@ -7,7 +7,7 @@ Some of the notable features of Flighta include:
 - User authentication using encrypted cookies to manage the user's state.
 - JWT authentication in the API to secure endpoints and ensure only admins can access them.
 - Usage of ADO.NET to communicate with the SQL database, which stores all the information.
-- Implementation of Bootstrap 5 with jQuery, Toastr, Bootstrap modals and dropdowns to create a responsive and user-friendly UI.
+- Implementation of Bootstrap 5 with jQuery, Toastr, Bootstrap modals and dropdowns to create a responsive UI.
 - Contact Us page and SendEmail API controller that uses SMTP client to send feedback to website developers.
 - The repository contains a postman collection export which is used to test the API and it's authentication and can be linked to a monitor
 
