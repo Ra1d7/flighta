@@ -71,7 +71,7 @@ Overall, Flighta is a well-designed, secure, and user-friendly flight booking we
 </p>
 
 
-
+</hr>
 <h2 align="center"> The MVC part of the project 🦸‍♂️</h2>
 
 <h3 align="center"> Flights </h3>
@@ -93,7 +93,7 @@ The Bookings controller will be automatically populated for clients, showing onl
 <p align="center">
 The Contact Us page allows users to send feedback to the website developers.
 </p>
-
+</hr>
 <h2 align="center"> The API ⚒️ </h2>
 <p align="center">
 The API uses JWT authentication, and almost all controllers are locked down only for users with the role of "Admin." Here's a breakdown of what each controller offers:
