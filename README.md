@@ -84,7 +84,7 @@ Overall, Flighta is a well-designed, secure, and user-friendly flight booking we
 
 
 </hr>
-<h2 align="center"> The MVC part of the project 🦸‍♂️</h2>
+<h2 align="center"> The MVC part of the project 🗻</h2>
 
 <h3 align="center"> Flights </h3>
 <p align="center">
