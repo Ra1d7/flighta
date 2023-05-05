@@ -10,7 +10,7 @@ namespace flighta.Controllers
         private readonly IEmailSender _sender;
         private readonly ILogger _logger;
 
-        public ContactController(IEmailSender sender, ILogger logger)
+        public ContactController(IEmailSender sender, ILogger<ContactController> logger)
         {
             _sender = sender;
             _logger = logger;
@@ -19,7 +19,6 @@ namespace flighta.Controllers
         {
             if (HttpContext.User.Identity.IsAuthenticated)
             {
-
                 _logger.MvcControllerLog("Contact", "Index", DateTime.Now, HttpContext.User.Identity.Name);
             }
             _logger.LogInformation($"An unauthenticated user with ip {HttpContext.Connection.RemoteIpAddress} viewed the contacts page at {DateTime.Now}");
