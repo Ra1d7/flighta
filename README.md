@@ -103,7 +103,7 @@ The Bookings controller will be automatically populated for clients, showing onl
 
 <h3 align="center"> Contact Us </h3>
 <p align="center">
-The Contact Us page allows users to send feedback to the website developers.
+The Contact Us page allows users to send feedback to the website developers using an SMTP client.
 </p>
 </hr>
 <h2 align="center"> The API ⚒️ </h2>
