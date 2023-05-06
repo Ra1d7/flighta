@@ -122,7 +122,7 @@ The Flights controller offers CRUD operations for flights.
 </p>
 
 <h3 align="center"> Users </h3>
-</p align="center">
+<p align="center">
 The Users controller offers CRUD operations for users.
 </p>
 
